@@ -65,3 +65,9 @@ function createRoute(req, res, next) {
     });
 }
 ```
+
+## Issues
+
+This should be refactored into a module, which could be then required in any controller, however the `.finally` block is quite important here, and I'm not sure how to wrap that up in a module, might have to be two separate modules.
+
+I could potentially set up a cron task which empties out the `tmp/` folder every x hours. If this was deployed to Heroku the local images would be deleted every 2 hours or so anyway, so it would be less of an issue.
