@@ -36,16 +36,15 @@ function createRoute(req, res, next) {
       // if there's no file uploaded, move to the next `then` block
       if(!req.file) return false;
 
-      // otherwise read the file that's just been uploaded to the `tmp/` folder
+      // otherwise read the file that's just been uploaded
       return fs.readFileAsync(req.file.path)
         .then((data) => {
           // upload the file to s3, using the `putObject` method (http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property)
-          // `data` is the file as binary data
           s3.putObjectAsync({
-            Key: req.file.filename,
-            Body: new Buffer(data, 'binary'),
-            ContentType: req.file.mimetype, // ensure s3 stores the file with the correct mime type
-            ContentLength: req.file.size
+            Key: req.file.filename, // the filename (required)
+            Body: new Buffer(data, 'binary'), // this is the file as binary data (required)
+            ContentType: req.file.mimetype, // ensure s3 stores the file with the correct mime type (optional defaults to application/octet-stream)
+            ContentLength: req.file.size // the size of the fine (optional)
           });
         });
     })
