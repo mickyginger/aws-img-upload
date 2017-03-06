@@ -5,6 +5,17 @@
     <title>file-upload-with-views</title>
   </head>
   <body>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <% if(!locals.isAuthenticated) { %>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+        <% } else { %>
+          <li><a href="/logout">Logout</a></li>
+        <% } %>
+      </ul>
+    </nav>
     <% for(const type in messages) { %>
       <div class="<%= type %>">
         <h5><%= messages[type] %></h5>
