@@ -16,7 +16,7 @@ Either way, I then delete the file from the `tmp/` folder.
 
 This code is from `controllers/registrations.js`.
 
-I am using `bluebird` for promises, `fs` for reading the file from the `tmp/` folder, and `s3` is a configured AWS `S3` instance.
+I am using [`bluebird`](http://bluebirdjs.com/) for promises, [`fs`](https://nodejs.org/api/fs.html) for reading the file from the `tmp/` folder, and `s3` is a configured AWS [`S3`](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html) instance.
 
 ```js
 const User = require('../models/user');
